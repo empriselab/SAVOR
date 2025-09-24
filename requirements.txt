@@ -1,0 +1,30 @@
+# Core dependencies
+torch>=1.9.0
+torchvision>=0.10.0
+numpy>=1.21.0
+pandas>=1.3.0
+Pillow>=8.3.0
+
+# Data processing
+scikit-learn>=1.0.0
+matplotlib>=3.4.0
+seaborn>=0.11.0
+
+# Configuration and utilities
+PyYAML>=5.4.0
+tqdm>=4.62.0
+
+# Optional: For advanced visualization
+plotly>=5.0.0
+
+# Optional: For Jupyter notebook support
+jupyter>=1.0.0
+ipykernel>=6.0.0
+
+# Optional: For API integration (if using LLM features)
+openai>=1.0.0
+
+# RLDS dataset creation (optional)
+tensorflow>=2.8.0
+tensorflow-datasets>=4.5.0
+

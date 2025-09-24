@@ -1,0 +1,4 @@
+model_type: gpt-4o
+temperature: 1.0
+seed: null
+setup_message: You are a helpful assistant.

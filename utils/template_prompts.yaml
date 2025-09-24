@@ -1,0 +1,88 @@
+ActionSelection:
+  ctx: >
+      You are a helpful assistant. The robot is using a plastic fork to pick up the food. Please select an appropriate action by considering the food's softness, moisture, and viscosity. Please note that the skewer action is generally more robust than the scoop action, but some foods may break apart when using the skewer action.
+      The robot arm interacts with various food items using a plastic fork. We summarize the history as follows:
+
+      Food Item: Nuts
+      Properties: Shape: Oval, Size: Bite-sized, Softness: 1, Moisture: 1, Viscosity: 1
+      Action with Success Rate: Skewer 0/5, Scoop 3/5, Cut 0/5,
+      Push 5/5, Dip 5/5
+
+      Food Item: Cheese
+      Properties: Shape: Block, Size: Small, Softness: 5, Moisture: 2, Viscosity: 5
+      Action with Success Rate: Skewer 5/5, Scoop 3/5, Cut 5/5,
+      Push 5/5, Dip 5/5
+  fewshot:
+    user_1: >
+      This is a food item: Sausage Slice.
+      The robot uses a plastic fork to try picking up the food.
+      The estimated food physical properties are as follows. The scores range from 0
+      to 5, similar to a 5-pt Likert scale. For example, a softness score of 1
+      indicates very hard, while a score of 5 indicates very soft.
+      Shape: cylinder
+      Size: bite-sized
+      Softness: 3
+      Moisture: 2
+      Viscosity: 1
+      Please select an action from [skewer, scoop, twirl, dip] to pick up the food item or select one action from [cut, push] to manipulate items to facilitate subsequent acquisition. Always follow the format: Reasoning: <your reason>. Answer: <your answer>.
+    assistant_1: >
+      Reasoning: Sausage slices are moderately firm to maintain their structure. Skewering is suitable as the fork can easily pierce them without breaking them apart.
+      Answer: skewer
+    user_2: >
+      This is a food item: Mashed Potatoes.
+      The robot uses a plastic fork to try picking up the food. The estimated food physical properties are as follows. The scores range from 0 to 5, similar to a 5-pt Likert scale. For example, a softness score of 1 indicates very hard, while a score of 5 indicates very soft.
+      Shape: Amorphous
+      Size: bite-sized
+      Softness: 4
+      Moisture: 3
+      Viscosity: 2
+      Please select an action from [skewer, scoop, twirl, dip] to pick up the food item or select one action from [cut, push] to manipulate items to facilitate subsequent acquisition. Always follow the format: Reasoning: <your reason>. Answer: <your answer>.
+    assistant_2: >
+      Reasoning: The food is soft and moist, making it suitable to scoop rather than skewer or cut. The viscosity indicates it will adhere moderately to the fork. If it is too soft.
+      Answer: scoop
+  query: >
+    This is a food item: {food_name}.
+    The robot uses a plastic fork to try picking up the food. The estimated food physical properties are as follows. The scores range from 0 to 5, similar to a 5-pt Likert scale. For example, a softness score of 1 indicates very hard, while a score of 5 indicates very soft.
+    
+    Shape: {Shape}
+    Size: {Size}
+    Softness: {Softness}
+    Moisture: {Moisture}
+    Viscosity: {Viscosity}
+
+    Please select an action from [skewer, scoop, twirl, dip] to pick up the food item or select one action from [cut, push] to manipulate items to facilitate subsequent acquisition. Always follow the format: Reasoning: <your reason>. Answer: <your answer>.
+    
+  query_w_instruction: >
+    The robot interacts with various food items using a plastic fork. We summarize the history as follows:
+    {CalibrationSummary}
+
+    The attempt history for this plate is summarized as follows:
+    {AttemptHistory}
+
+    We briefly describe the skills as follows:
+    - Skewer: Use the fork to pierce and lift the food item.
+    - Scoop: Use the fork to scoop up soft or loose food items.
+    - Twirl: Use the fork to twirl food items that can be wrapped around the fork tines.
+    - Dip: Use the fork to dip food items into sauces.
+    - Cut: Use the fork to stabilize the food item while cutting it into smaller pieces.
+    - Push: Use the fork to push or reposition food items to facilitate subsequent acquisition.
+  
+    This is a food item: {food_name}.
+    The robot uses a plastic fork to try picking up the food. The estimated food physical properties are as follows. The scores range from 0 to 5, similar to a 5-pt Likert scale. For example, a softness score of 1 indicates very hard, while a score of 5 indicates very soft.
+    
+    Shape: {Shape}
+    Size: {Size}
+    Softness: {Softness}
+    Moisture: {Moisture}
+    Viscosity: {Viscosity}
+
+    Please select an action from [skewer, scoop, twirl, dip] to pick up the food item or select one action from [cut, push] to manipulate items to facilitate subsequent acquisition. Always follow the format: Reasoning: <your reason>. Answer: <your answer>.
+ImageQuery:
+  ctx: You are a helpful assistant.
+  query: >
+    This is a food item: {food_name}. Please estimate the physical properties of the food item, including Shape, Size , Softness, Moisture, and Viscosity, based on commonsense reasoning. For Softness, Moisture, and Viscosity, provide a score ranging from 0 to 5, similar to a 5-point Likert scale (e.g., a softness score of 1 indicates very hard, while 5 indicates very soft).
+    Always follow this format:  Answer: Shape: <shape> ; Size: <size>; Softness: <softness score>; Moisture: <moisture score>; Viscosity: <viscosity score>
+  query_w_instruction: >
+    {AttemptHistory}
+    This is a food item: {food_name}. Please estimate the physical properties of the food item, including Shape, Size , Softness, Moisture, and Viscosity, based on commonsense reasoning. For Softness, Moisture, and Viscosity, provide a score ranging from 0 to 5, similar to a 5-point Likert scale (e.g., a softness score of 1 indicates very hard, while 5 indicates very soft).
+    Always follow this format:  Answer: Shape: <shape> ; Size: <size>; Softness: <softness score>; Moisture: <moisture score>; Viscosity: <viscosity score>
