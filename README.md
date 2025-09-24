@@ -17,7 +17,7 @@ A implementation for the paper [**SAVOR: Skill Affordance Learning from Visuo-Ha
 
 1. **Clone the repository:**
 ```bash
-git clone <repository-url>
+git clone https://github.com/empriselab/SAVOR.git
 cd SAVOR
 ```
 
